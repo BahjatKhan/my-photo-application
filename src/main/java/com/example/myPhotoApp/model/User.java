@@ -7,10 +7,12 @@ import lombok.Setter;
 @Setter
 public class User {
 
+
     private String fastName;
     private String lastName;
     private int age;
     private String email;
+    private int userId;
 
     public User(String fastName, String lastName, int age, String email) {
         this.fastName = fastName;
