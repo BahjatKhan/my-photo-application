@@ -12,12 +12,30 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private UserRepository saveUser;
 
-    public User getUser(){
-        return userRepository.getUser();
+
+    public User saveUser(User user){
+        return userRepository.save(user);
     }
+
+    public List<User> getUser(){
+        return userRepository.findAll();
+    }
+    public User updateUser(User user){
+        return userRepository.save(user);
+    }
+
+    public void deleteUser(String userId) {
+        userRepository.deleteById(userId);
+    }
+
+   public List<User> getByAge(String age) {
+        return userRepository.getByAge(age);
+    }
+
+
+
+ /*
 
     public User saveUser(User user){
         return saveUser.saveUser(user);
@@ -37,5 +55,9 @@ public class UserService {
 
     public User deleteUser(int userId) {
         return userRepository.deleteUser(userId);
-    }
+    }*/
+
+ /*   public User updateBySerialNumber(Integer serialNumber) {
+        return userRepository.updateBySerialNumber(serialNumber);
+    }*/
 }

@@ -9,16 +9,36 @@ import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 public class UserResource {
 
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserService service;
 
-    @GetMapping("/user/info")
+    @PostMapping
+    public User saveUser(@RequestBody User user){
+
+        return userService.saveUser(user);
+    }
+    @GetMapping
+    public List<User> getUser(){
+        return userService.getUser();
+    }
+   @GetMapping("/find")
+    public List<User> getByAge(@RequestParam(name="age") String age){
+        return userService.getByAge(age);
+    }
+    @PutMapping
+    public User updateUser(@RequestBody User user){
+        return userService.updateUser(user);
+    }
+    @DeleteMapping
+    public void deleteUser(@RequestParam(name="userId") String userId){
+        userService.deleteUser(userId);
+    }
+
+/*    @GetMapping("/user/info")
     public User getUser(){
         return userService.getUser();
     }
@@ -46,6 +66,11 @@ public class UserResource {
     @DeleteMapping("/deleteUser")
     public User deleteUser(@RequestParam(name="userId") int userId){
             return userService.deleteUser(userId);
-    }
+    }*/
+
+ /*   @PutMapping("/update/{serialNumber}")
+    public User updateBySerialNumber(@PathVariable("serialNumber") Integer serialNumber){
+        return userService.updateBySerialNumber(serialNumber);
+    }*/
 
 }
